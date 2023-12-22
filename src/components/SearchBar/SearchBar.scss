@@ -1,0 +1,25 @@
+.search-bar {
+  align-self: flex-end;
+
+  display: flex;
+  margin-right: 30px;
+  padding: 10px;
+  border: 1px solid grey;
+  border-radius: 5px;
+
+  .input {
+    border: none;
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  .vl {
+    border-right: 2px solid grey;
+    margin: 0 10px;
+  }
+
+  .logo {
+  }
+}

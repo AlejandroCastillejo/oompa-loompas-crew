@@ -1,23 +1,38 @@
-import logo from './logo.svg';
-import './App.css';
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+
+import Header from "./components/Header";
+import MainView from "./pages/MainView";
+import DetailView from "./pages/DetailView";
+
+import "./App.css";
+
+// ToDo: move router to different file
+const router = createBrowserRouter([
+  {
+    path: "/",
+    children: [
+      {
+        index: true,
+        element: <MainView />,
+      },
+      {
+        path: "/:id",
+        element: <DetailView />,
+      },
+    ],
+  },
+]);
 
 function App() {
+  const queryClient = new QueryClient();
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <QueryClientProvider client={queryClient}>
+        <Header />
+        <RouterProvider router={router} />
+      </QueryClientProvider>
     </div>
   );
 }

@@ -1,0 +1,38 @@
+.detail-item {
+  display: flex;
+  flex-direction: row;
+  max-width: 1200px;
+  margin: 20px;
+  cursor: pointer;
+  text-decoration: none;
+  border-radius: 5px;
+  text-align: start;
+
+  .image {
+    max-width: 500px;
+    margin-right: 20px;
+  }
+
+  .name {
+    margin: 5px;
+    color: black;
+    font-size: 20px;
+    font-weight: bold;
+  }
+
+  .gender {
+    margin: 5px;
+    color: grey;
+    font-size: 16px;
+  }
+
+  .profession {
+    margin: 5px;
+    color: grey;
+    font-size: 16px;
+  }
+
+  .description {
+    margin: 5px;
+  }
+}

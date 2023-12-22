@@ -1,0 +1,15 @@
+.header {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 5px 25px;
+  background-color: rgb(164, 164, 164);
+
+  .icon {
+    margin: 10px;
+  }
+
+  .title {
+    color: black;
+  }
+}

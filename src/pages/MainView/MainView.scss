@@ -1,0 +1,18 @@
+.main-view {
+  // width: 100vw;
+  width: fit-content;
+  margin-bottom: 40px;
+  display: flex;
+  flex-direction: column;
+
+  .info {
+    position: fixed;
+  }
+
+  .results-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 1400px;
+  }
+}
