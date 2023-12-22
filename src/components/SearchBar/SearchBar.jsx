@@ -9,7 +9,7 @@ import logo from "../../assets/icons/ic_search.png";
 import "./SearchBar.scss";
 
 function SearchBar() {
-  const { results } = useSelector((state) => state.main);
+  const { allResults } = useSelector((state) => state.main);
 
   const dispatch = useDispatch();
   const dispatchChangeSearchResults = (results) =>
@@ -22,9 +22,12 @@ function SearchBar() {
   const handleChangeValue = ({ target: { value } }) => {
     console.log(value);
     setSearchValue(value);
-    value !== "" && console.log(filterResults(results, filterBy, value));
+    // value !== "" && console.log(filterResults(allResults, filterBy, value));
 
-    dispatchChangeSearchResults(filterResults(results, filterBy, value));
+    dispatchChangeSearchResults({
+      searchResults: filterResults(allResults, filterBy, value),
+      searchActive: value !== "",
+    });
   };
 
   return (

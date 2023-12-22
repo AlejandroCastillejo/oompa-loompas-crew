@@ -20,7 +20,9 @@ function DetailItem({
         </p>
         <p className="gender">{gender}</p>
         <p className="profession">{profession}</p>
-        <div className="description">{HTMLReactParser(description)}</div>
+        <div className="description">
+          {description && HTMLReactParser(description)}
+        </div>
       </div>
     </div>
   );

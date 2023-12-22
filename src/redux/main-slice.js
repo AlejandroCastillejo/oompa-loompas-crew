@@ -5,7 +5,7 @@ import { getPageData } from "../services/oompa-loompas.service";
 export const mainSlice = createSliceWithThunks({
   name: "main",
   initialState: {
-    results: [],
+    allResults: [],
     searchResults: [],
     searchActive: false,
     lastPage: 0,
@@ -21,7 +21,6 @@ export const mainSlice = createSliceWithThunks({
       async () => {
         console.log("action: update results");
         const res = await getPageData(1);
-        // console.log(res);
         return res.data;
       },
       {
@@ -33,7 +32,7 @@ export const mainSlice = createSliceWithThunks({
           state.errorLoading = true;
         },
         fulfilled: (state, { payload }) => {
-          state.results = payload?.results;
+          state.allResults = payload?.results;
           state.lastPage = payload?.current;
           state.totalPages = payload?.total;
           state.lastUpdate = new Date().getTime();
@@ -62,18 +61,18 @@ export const mainSlice = createSliceWithThunks({
         fulfilled: (state, { payload }) => {
           state.isLoading = false;
           state.errorLoading = false;
-          // console.log("res", payload.results);
+          console.log("payload", payload);
+          console.log("state", state.lastPage);
           state.lastPage = payload?.current;
           state.totalPages = payload?.total;
-          payload?.results && state.results.push(...payload.results);
+          payload?.results && state.allResults.push(...payload.results);
         },
       }
     ),
 
     changeSearchResults: (state, { payload }) => {
-      console.log("change..", payload);
-      state.searchResults = payload;
-      state.searchActive = payload !== "";
+      state.searchResults = payload.searchResults;
+      state.searchActive = payload.searchActive;
     },
   }),
 });

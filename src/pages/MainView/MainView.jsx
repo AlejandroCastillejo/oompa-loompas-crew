@@ -16,7 +16,7 @@ function MainView() {
   const loadTriggerRef = useRef(null);
 
   const {
-    results: allResults,
+    allResults,
     searchResults,
     searchActive,
     lastPage,
@@ -31,18 +31,9 @@ function MainView() {
 
   const results = searchActive ? searchResults : allResults;
 
-  const handleLoadPage = (entries) => {
-    console.log("laod page", entries);
-    console.log("lastPage", typeof lastPage);
-    const [entry] = entries;
-    entry.isIntersecting &&
-      results?.length &&
-      lastPage < totalPages &&
-      !isLoading &&
-      !searchActive &&
-      dispatchAddPage(lastPage + 1);
-    // debugger;
-  };
+  useEffect(() => {
+    console.log(lastPage);
+  }, [lastPage]);
 
   useEffect(() => {
     // dispatchUpdateData();
@@ -56,6 +47,19 @@ function MainView() {
   }, []);
 
   useEffect(() => {
+    const handleLoadPage = (entries) => {
+      console.log("laod page", entries[0].isIntersecting);
+      console.log("lastPage", lastPage);
+
+      const [entry] = entries;
+      entry.isIntersecting &&
+        allResults?.length &&
+        lastPage < totalPages &&
+        !isLoading &&
+        !searchActive &&
+        dispatchAddPage(lastPage + 1);
+    };
+
     const observer = new IntersectionObserver(handleLoadPage);
 
     loadTriggerRef.current && observer.observe(loadTriggerRef.current);
@@ -63,7 +67,14 @@ function MainView() {
     return () => {
       loadTriggerRef.current && observer.unobserve(loadTriggerRef.current);
     };
-  }, [loadTriggerRef]);
+  }, [
+    loadTriggerRef,
+    allResults,
+    lastPage,
+    totalPages,
+    isLoading,
+    searchActive,
+  ]);
 
   return (
     <div className="main-view">
