@@ -5,7 +5,7 @@ export const filterResults = (results, filterBy, values) => {
       .split(" ")
       .filter((val) => val !== "")
       .every((value) =>
-        filterBy.some((filter) => item[filter].toLowerCase().includes(value))
+        filterBy.some((filter) => item[filter].toLowerCase().startsWith(value))
       )
   );
 };
