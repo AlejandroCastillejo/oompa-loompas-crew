@@ -13,6 +13,7 @@ import {
 } from "redux-persist";
 
 import { mainReducer } from "./main-slice";
+import { detailReducer } from "./detail-slice";
 
 const mainPersistConfig = {
   key: "main",
@@ -25,6 +26,10 @@ const detailPersistConfig = {
 };
 
 const persistedMainReducer = persistReducer(mainPersistConfig, mainReducer);
+const persistedDetailReducer = persistReducer(
+  detailPersistConfig,
+  detailReducer
+);
 
 // export default configureStore({
 //   reducer: {
@@ -36,7 +41,7 @@ export const store = configureStore(
   {
     reducer: {
       main: persistedMainReducer,
-      // main: mainReducer,
+      detail: persistedDetailReducer,
     },
     middleware: (getDefaultMiddleware) =>
       getDefaultMiddleware({

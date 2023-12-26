@@ -1,8 +1,12 @@
-import React, { useEffect, useState } from "react";
-
+import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { getDetailData } from "../../services/oompa-loompas.service";
+import { useSelector, useDispatch } from "react-redux";
+
+import { detailActions } from "../../redux/detail-slice";
 import { getGenderByLetter } from "../../utils/parse-data";
+import { isOutdated } from "../../utils/date";
+
+import { STORAGE_CACHE_TIME } from "../../constants";
 
 import DetailItem from "../../components/DetailItem";
 
@@ -11,14 +15,27 @@ import "./DetailView.scss";
 function DetailView() {
   const { id } = useParams();
 
-  const [result, setResult] = useState(null);
+  const { results, isLoading } = useSelector((state) => state.detail);
+  const result = results[id];
+
+  const dispatch = useDispatch();
+  const dispatchAddItem = (id) => dispatch(detailActions.addItem(id));
 
   useEffect(() => {
-    getDetailData(id).then((res) => {
-      console.log(res.data);
-      setResult(res.data);
-    });
+    console.log(results);
+    console.log("result", result);
+    if (
+      !result ||
+      !result.lastUpdate ||
+      isOutdated(result.lastUpdate, STORAGE_CACHE_TIME)
+    ) {
+      dispatchAddItem(id);
+    }
   }, []);
+
+  if (isLoading) {
+    return <div>Loading... </div>;
+  }
 
   return (
     <div className="detail-view">

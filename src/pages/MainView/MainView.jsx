@@ -5,12 +5,12 @@ import { mainActions } from "../../redux/main-slice";
 import { getGenderByLetter } from "../../utils/parse-data";
 import { isOutdated } from "../../utils/date";
 
+import { STORAGE_CACHE_TIME } from "../../constants";
+
 import SearchBar from "../../components/SearchBar";
 import ListItem from "../../components/ListItem";
 
 import "./MainView.scss";
-
-const EXP_TIME = 1000 * 60 * 60 * 24; //24 hours
 
 function MainView() {
   const loadTriggerRef = useRef(null);
@@ -41,7 +41,7 @@ function MainView() {
     console.log("lastUpdate", lastUpdate);
     console.log("lastPage", lastPage);
     console.log("totalPages", totalPages);
-    if (!results || !lastUpdate || isOutdated(lastUpdate, EXP_TIME)) {
+    if (!results || !lastUpdate || isOutdated(lastUpdate, STORAGE_CACHE_TIME)) {
       dispatchUpdateResults();
     }
   }, []);
