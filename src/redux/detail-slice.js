@@ -30,7 +30,7 @@ export const detailSlice = createSliceWithThunks({
         },
         fulfilled: (state, { payload }) => {
           state.results = {
-            ...state.data,
+            ...state.results,
             [payload.id]: { ...payload.data, lastUpdate: new Date().getTime() },
           };
           state.isLoading = false;
