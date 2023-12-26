@@ -1,5 +1,4 @@
-import { applyMiddleware, configureStore } from "@reduxjs/toolkit";
-import { thunk } from "redux-thunk";
+import { configureStore } from "@reduxjs/toolkit";
 import storage from "redux-persist/lib/storage";
 import {
   persistReducer,
@@ -19,7 +18,6 @@ const mainPersistConfig = {
   key: "main",
   storage,
 };
-
 const detailPersistConfig = {
   key: "detail",
   storage,
@@ -31,26 +29,17 @@ const persistedDetailReducer = persistReducer(
   detailReducer
 );
 
-// export default configureStore({
-//   reducer: {
-//     main: mainReducer,
-//   },
-// });
-
-export const store = configureStore(
-  {
-    reducer: {
-      main: persistedMainReducer,
-      detail: persistedDetailReducer,
-    },
-    middleware: (getDefaultMiddleware) =>
-      getDefaultMiddleware({
-        serializableCheck: {
-          ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
-        },
-      }),
-  }
-  // applyMiddleware(thunk)
-);
+export const store = configureStore({
+  reducer: {
+    main: persistedMainReducer,
+    detail: persistedDetailReducer,
+  },
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: {
+        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+      },
+    }),
+});
 
 export const persistor = persistStore(store);

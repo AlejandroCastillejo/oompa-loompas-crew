@@ -1,8 +1,6 @@
-import React from "react";
 import HTMLReactParser from "html-react-parser";
 
 import "./DetailItem.scss";
-import { redirect } from "react-router-dom";
 
 function DetailItem({
   first_name,
