@@ -47,7 +47,6 @@ export const mainSlice = createSliceWithThunks({
       async (page) => {
         const res = await getPageData(page);
         console.log("action: add page", page);
-        console.log(res.data);
         return res.data;
       },
       {
@@ -61,8 +60,6 @@ export const mainSlice = createSliceWithThunks({
         fulfilled: (state, { payload }) => {
           state.isLoading = false;
           state.errorLoading = false;
-          console.log("payload", payload);
-          console.log("state", state.lastPage);
           state.lastPage = payload?.current;
           state.totalPages = payload?.total;
           payload?.results && state.allResults.push(...payload.results);

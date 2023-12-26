@@ -1,7 +1,7 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
-import Header from "./components/Header";
+import Layout from "./Layout";
 import MainView from "./pages/MainView";
 import DetailView from "./pages/DetailView";
 
@@ -10,10 +10,13 @@ import "./App.css";
 // ToDo: move router to different file
 const router = createBrowserRouter([
   {
-    path: "/",
+    element: <Layout />,
+
     children: [
       {
         index: true,
+        path: "/",
+
         element: <MainView />,
       },
       {
@@ -30,7 +33,6 @@ function App() {
   return (
     <div className="App">
       <QueryClientProvider client={queryClient}>
-        <Header />
         <RouterProvider router={router} />
       </QueryClientProvider>
     </div>
