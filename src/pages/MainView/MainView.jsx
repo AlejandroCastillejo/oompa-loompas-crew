@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
 import { mainActions } from "../../redux/main-slice";
@@ -32,15 +32,6 @@ function MainView() {
   const results = searchActive ? searchResults : allResults;
 
   useEffect(() => {
-    console.log(lastPage);
-  }, [lastPage]);
-
-  useEffect(() => {
-    // dispatchUpdateData();
-    console.log("results", results);
-    console.log("lastUpdate", lastUpdate);
-    console.log("lastPage", lastPage);
-    console.log("totalPages", totalPages);
     if (!results || !lastUpdate || isOutdated(lastUpdate, STORAGE_CACHE_TIME)) {
       dispatchUpdateResults();
     }
@@ -48,9 +39,6 @@ function MainView() {
 
   useEffect(() => {
     const handleLoadPage = (entries) => {
-      console.log("laod page", entries[0].isIntersecting);
-      console.log("lastPage", lastPage);
-
       const [entry] = entries;
       entry.isIntersecting &&
         allResults?.length &&
@@ -82,7 +70,6 @@ function MainView() {
         MainView {lastPage}/{totalPages}
       </div>
       <SearchBar />
-      {/* <div> */}
       {results && (
         <div className="results-grid">
           {results?.length &&
@@ -99,17 +86,9 @@ function MainView() {
             ))}
         </div>
       )}
-      <button
-        onClick={() => {
-          // dispatchUpdate();
-          console.log(results);
-        }}
-      >
-        Show More
-      </button>
+
       {isLoading && <div>Loading next page...</div>}
       <div ref={loadTriggerRef}>Load next page</div>
-      {/* </div> */}
     </div>
   );
 }

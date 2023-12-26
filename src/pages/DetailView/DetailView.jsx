@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
@@ -22,8 +22,11 @@ function DetailView() {
   const dispatchAddItem = (id) => dispatch(detailActions.addItem(id));
 
   useEffect(() => {
-    console.log(results);
     console.log("result", result);
+    console.log(
+      "isOutdated",
+      result?.lastUpdate && isOutdated(result.lastUpdate, STORAGE_CACHE_TIME)
+    );
     if (
       !result ||
       !result.lastUpdate ||
@@ -31,7 +34,7 @@ function DetailView() {
     ) {
       dispatchAddItem(id);
     }
-  }, []);
+  }, [result]);
 
   if (isLoading) {
     return <div>Loading... </div>;
