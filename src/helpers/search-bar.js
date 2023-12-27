@@ -1,6 +1,5 @@
-export const filterResults = (results, filterBy, values) => {
-  console.log("values:", values);
-  return results.filter((item) =>
+export const filterResults = (results, filterBy, values) =>
+  results.filter((item) =>
     values
       .split(" ")
       .filter((val) => val !== "")
@@ -8,4 +7,3 @@ export const filterResults = (results, filterBy, values) => {
         filterBy.some((filter) => item[filter].toLowerCase().startsWith(value))
       )
   );
-};

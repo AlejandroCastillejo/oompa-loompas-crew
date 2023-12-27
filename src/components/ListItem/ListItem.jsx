@@ -3,9 +3,6 @@ import { Link } from "react-router-dom";
 import "./ListItem.scss";
 
 function ListItem({ id, image, first_name, last_name, gender, profession }) {
-  // const genderName =
-  //   gender === "F" ? "Woman" : gender === "M" ? "Man" : "Other";
-
   return (
     <Link className="list-item" to={`/${id}`}>
       <img src={image} alt={`${first_name}'s picture`} width={400} />

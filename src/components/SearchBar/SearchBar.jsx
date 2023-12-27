@@ -20,9 +20,7 @@ function SearchBar() {
   const filterBy = ["first_name", "last_name", "profession"];
 
   const handleChangeValue = ({ target: { value } }) => {
-    console.log(value);
     setSearchValue(value);
-    // value !== "" && console.log(filterResults(allResults, filterBy, value));
 
     dispatchChangeSearchResults({
       searchResults: filterResults(allResults, filterBy, value),
