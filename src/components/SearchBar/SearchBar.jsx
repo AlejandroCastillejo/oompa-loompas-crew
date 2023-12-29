@@ -36,7 +36,7 @@ function SearchBar() {
         onChange={handleChangeValue}
       />
       <div className="vl" />
-      <img className="logo" src={logo} alt="Search" height={20} />
+      <img className="logo" src={logo} alt="Search" />
     </div>
   );
 }

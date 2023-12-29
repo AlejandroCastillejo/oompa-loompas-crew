@@ -13,10 +13,10 @@ function Header() {
         className="icon"
         src={logo}
         alt="Logo"
-        width={50}
+        // width={45}
         onClick={() => navigate("/")}
       />
-      <h1>Oompa Loompa's Crew</h1>
+      <h1 className="title">Oompa Loompa's Crew</h1>
     </div>
   );
 }

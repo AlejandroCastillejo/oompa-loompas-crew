@@ -1,11 +1,19 @@
-.search-bar {
-  align-self: flex-end;
+@import "@/../../../styles/media-breakpoints.scss";
 
+.search-bar {
   display: flex;
+  align-self: flex-end;
+  height: 20px;
+  margin-top: 10px;
   margin-right: 30px;
   padding: 10px;
   border: 1px solid grey;
   border-radius: 5px;
+  align-items: center;
+
+  @include screen-sm {
+    height: 12px;
+  }
 
   .input {
     border: none;
@@ -17,9 +25,11 @@
 
   .vl {
     border-right: 2px solid grey;
+    height: inherit;
     margin: 0 10px;
   }
 
   .logo {
+    height: inherit;
   }
 }

@@ -1,6 +1,9 @@
+@import "@/../../../styles/media-breakpoints.scss";
+
 .list-item {
   display: flex;
   flex-direction: column;
+  align-items: center;
   max-width: 500px;
   margin: 20px;
   cursor: pointer;
@@ -8,9 +11,20 @@
   border-radius: 5px;
   text-align: start;
 
+  @include screen-sm {
+    max-width: 400px;
+  }
+
   &:hover {
     transform: scale(1.02);
     border: 1px rgb(215, 215, 215) solid;
+  }
+
+  .image {
+    width: 400px;
+    @include screen-sm {
+      width: 100%;
+    }
   }
 
   .name {

@@ -1,0 +1,15 @@
+/* BREAKPOINTS */
+$screen-sm-max: 768px; // Smartphones and small tablets
+/**/
+
+/* MIXINS */
+@mixin screen-sm {
+  @media (max-width: #{$screen-sm-max}) {
+    @content;
+  }
+}
+/**/
+
+:export {
+  screenSmMax: $screen-sm-max;
+}

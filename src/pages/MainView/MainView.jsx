@@ -67,9 +67,6 @@ function MainView() {
 
   return (
     <div className="main-view">
-      <div className="info">
-        MainView {lastPage}/{totalPages}
-      </div>
       <SearchBar />
       {results && (
         <div className="results-grid" role="list">
