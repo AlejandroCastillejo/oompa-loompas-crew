@@ -13,7 +13,6 @@ function Header() {
         className="icon"
         src={logo}
         alt="Logo"
-        // width={45}
         onClick={() => navigate("/")}
       />
       <h1 className="title">Oompa Loompa's Crew</h1>
