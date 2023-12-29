@@ -5,6 +5,7 @@ import "./__mocks__/intersectionObserverMock";
 
 import App from "./App";
 
+//ToDo: test router and pages
 describe("App", () => {
   test("should render header", () => {
     renderWithProviders(<App />);
