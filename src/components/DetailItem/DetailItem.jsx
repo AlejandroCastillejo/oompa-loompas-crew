@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import HTMLReactParser from "html-react-parser";
 
 import "./DetailItem.scss";
@@ -31,5 +32,14 @@ function DetailItem({
     </div>
   );
 }
+
+DetailItem.propTypes = {
+  first_name: PropTypes.string,
+  last_name: PropTypes.string,
+  gender: PropTypes.string,
+  profession: PropTypes.string,
+  description: PropTypes.string,
+  imageSrc: PropTypes.string,
+};
 
 export default DetailItem;

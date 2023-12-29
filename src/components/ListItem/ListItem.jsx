@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
 import "./ListItem.scss";
@@ -14,5 +15,14 @@ function ListItem({ id, imageSrc, first_name, last_name, gender, profession }) {
     </Link>
   );
 }
+
+ListItem.propTypes = {
+  id: PropTypes.number,
+  imageSrc: PropTypes.string,
+  first_name: PropTypes.string,
+  last_name: PropTypes.string,
+  gender: PropTypes.string,
+  profession: PropTypes.string,
+};
 
 export default ListItem;
