@@ -5,7 +5,7 @@ import Layout from "./Layout";
 import MainView from "./pages/MainView";
 import DetailView from "./pages/DetailView";
 
-import "./App.css";
+import "./App.scss";
 
 // ToDo: move router to different file
 const router = createBrowserRouter([
