@@ -1,8 +1,15 @@
-import { render, screen } from '@testing-library/react';
-import App from './App';
+import { screen } from "@testing-library/react";
+import { renderWithProviders } from "./redux/test-utils";
 
-test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+import "./__mocks__/intersectionObserverMock";
+
+import App from "./App";
+
+describe("App", () => {
+  test("should render header", () => {
+    renderWithProviders(<App />);
+
+    const title = screen.getByText(/Oompa Loompa's Crew/i);
+    expect(title).toBeInTheDocument();
+  });
 });

@@ -12,6 +12,7 @@ import ListItem from "../../components/ListItem";
 
 import "./MainView.scss";
 
+//ToDo: check useEffect dependencies, use useCallback for dispatch functions
 function MainView() {
   const loadTriggerRef = useRef(null);
 
@@ -71,13 +72,13 @@ function MainView() {
       </div>
       <SearchBar />
       {results && (
-        <div className="results-grid">
+        <div className="results-grid" role="list">
           {results?.length &&
             results.map((item) => (
               <ListItem
                 key={item.id}
                 id={item.id}
-                image={item.image}
+                imageSrc={item.image}
                 first_name={item.first_name}
                 last_name={item.last_name}
                 gender={item.gender && getGenderByLetter(item.gender)}
