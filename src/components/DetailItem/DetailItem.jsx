@@ -13,12 +13,7 @@ function DetailItem({
 }) {
   return (
     <div className="detail-item">
-      <img
-        className="image"
-        src={imageSrc}
-        alt={`${first_name}'s picture`}
-        onClick={() => {}}
-      />
+      <img className="image" src={imageSrc} alt={`${first_name}'s picture`} />
       <div>
         <p className="name">
           {first_name} {last_name}
